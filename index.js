@@ -7,16 +7,21 @@ var handlebars = require('express-handlebars')
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+//引入自定义js文件
+var fortune = require('./lib/fortune.js');
+
+//设置静态资源访问
 app.use(express.static(__dirname + '/public'));
 
+//端口设置
 app.set('port', process.env.PORT || 3000);
 
+//路由
 app.get('/', function(req, res){
 	res.render('home');
 });
-
 app.get('/about', function(req, res){
-	res.render('about');
+	res.render('about', {fortune: fortune.getFortune()});
 });
 
 //定制404页面
