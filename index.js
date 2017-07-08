@@ -13,6 +13,9 @@ var fortune = require('./lib/fortune.js');
 //设置静态资源访问
 app.use(express.static(__dirname + '/public'));
 
+//禁用x-powered-by
+app.disable('x-powered-by');
+
 //端口设置
 app.set('port', process.env.PORT || 3000);
 
