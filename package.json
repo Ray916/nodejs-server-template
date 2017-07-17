@@ -4,8 +4,19 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.3",
+    "http": "0.0.0",
+    "method-override": "^2.3.9",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.4.3",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {},
   "scripts": {
