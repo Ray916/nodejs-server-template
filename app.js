@@ -7,9 +7,10 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	favicon = require('serve-favicon'),
 	logger = require('morgan'),
-	methodOverride = require('method-override');
+	methodOverride = require('method-override'),
+	mongoose = require('mongoose');
 
-var app =express()
+var app =express();
 //设置handlebars视图引擎
 var handlebars = require('express-handlebars')
 						.create({defaultLayout: 'main'});
@@ -52,6 +53,14 @@ app.set('port', process.env.PORT || 3000);
 if('development' == app.get('dev')){
 	app.use(express.errorHandler());
 }
+
+//mongodb
+mongoose.connect('mongodb://localhost/nodejs',{useMongoClient:true});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', function(){
+    console.log('mongidb connected !');
+});
 
 //passport设置
 require('./config/passport')(passport);

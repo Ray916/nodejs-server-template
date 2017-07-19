@@ -1,5 +1,5 @@
-var main = require('../handlers/main');
-var user = require('../handlers/user');
+var main = require('../handlers/mainHandler');
+var user = require('../handlers/userHandler');
 var fortune = require('../lib/fortune');
 
 //路由信息
@@ -10,7 +10,8 @@ module.exports = function(app, passport){
 	app.post('/login', 
 	passport.authenticate('local',{
 		successRedirect: '/users',
-		failureRedirect: '/'
+		failureRedirect: '/',
+		failureFlash: true
 	}));
 
 	//需要认证登录的路由
