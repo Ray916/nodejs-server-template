@@ -27,8 +27,7 @@ app.use(passport.session());
 
 //设置使用express默认的图标
 //如果要使用自己的图标
-//app.use(favicon(__dirname + '/public/img/hot.ico'));
-
+app.use(favicon(__dirname + '/public/img/hot.ico'));
 
 //在开发环境下使用，在终端显示简单的不同颜色的日志
 app.use(logger('dev'));
