@@ -27,7 +27,7 @@ app.use(passport.session());
 
 //设置使用express默认的图标
 //如果要使用自己的图标
-//app.use(favicon(__dirname + '/public/img/favicon.ico'));
+//app.use(favicon(__dirname + '/public/img/hot.ico'));
 
 
 //在开发环境下使用，在终端显示简单的不同颜色的日志
@@ -63,10 +63,10 @@ db.once('open', function(){
 });
 
 //passport设置
-require('./config/passport')(passport);
+require('./config/local/passport')(passport);
 
 //路由
-require('./routes/route')(app, passport);
+require('./controllers/route')(app, passport);
 
 //端口监听
 app.listen(app.get('port'), function(){

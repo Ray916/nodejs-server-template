@@ -1,6 +1,5 @@
 var main = require('../handlers/mainHandler');
 var user = require('../handlers/userHandler');
-var fortune = require('../lib/fortune');
 
 //路由信息
 module.exports = function(app, passport){
@@ -10,16 +9,12 @@ module.exports = function(app, passport){
 	app.post('/login', 
 	passport.authenticate('local',{
 		successRedirect: '/users',
-		failureRedirect: '/',
-		failureFlash: true
+		failureRedirect: '/'
 	}));
 
 	//需要认证登录的路由
 	app.all('/users', isLoggedIn);
 	app.get('/users',user.list);
-	app.get('/about', function(req, res){
-		res.render('about', {fortune: fortune.getFortune()});
-	});
 
 	//登出
 	app.get('/logout', function(req, res){

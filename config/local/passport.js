@@ -1,5 +1,5 @@
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/user.js');
+var User = require('../../models/user');
 
 module.exports = function(passport){
 
@@ -8,7 +8,7 @@ module.exports = function(passport){
 			
 			User.findOne({'username': username}, function(err, user){
 				
-				if(err){
+				if(err || user === null){
 					return done(null, false, {message: "用户名错误！"});
 				}
 				if(!user.validPassword(password)){
