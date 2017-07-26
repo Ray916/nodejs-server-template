@@ -62,7 +62,7 @@ db.once('open', function(){
 });
 
 //passport设置
-require('./config/local/passport')(passport);
+require('./config/passport')(passport);
 
 //路由
 require('./controllers/route')(app, passport);

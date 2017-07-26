@@ -1,9 +1,8 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../../models/user');
 
-module.exports = function(passport){
-
-	passport.use('local', new LocalStrategy(
+//本地用户名密码登录认证策略
+module.exports = new LocalStrategy(
 		function(username, password, done){
 			
 			User.findOne({'username': username}, function(err, user){
@@ -17,16 +16,4 @@ module.exports = function(passport){
 				console.log("认证成功");
 				return done(null, user);
 			});
-		}
-	));
-
-	passport.serializeUser(function(user, done){
-		done(null, user);   //可以通过数据库方式操作
-	});
-
-	passport.deserializeUser(function(user, done){
-		done(null, user);
-	});
-}
-
-
+});
